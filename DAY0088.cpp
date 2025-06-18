@@ -2,6 +2,7 @@
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
+        //time efficient but not memory efficient    
         // stack<int>stack;
         // int size=tokens.size();
         // for(int i=0;i<size;i++){
@@ -20,6 +21,8 @@ public:
         //     }
         // }
         // return stack.top();
+
+        // memory efficient but not time efficient
         vector<int>stack;
         int size=tokens.size();
         for(int i=0;i<size;i++){
