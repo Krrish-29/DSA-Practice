@@ -4,9 +4,10 @@ public:
     long long minimumDifference(vector<int>& nums) {
         priority_queue<int,vector<int>>maxheap;
         priority_queue<int,vector<int>,greater<int>>minheap;
-        int n=nums.size()/3,leftsum=0,rightsum=0;
-        vector<int>leftminsum(2*n,0);
-        vector<int>rightmaxsum(2*n,0);
+        int n=nums.size()/3;
+        long long leftsum=0,rightsum=0;
+        vector<long long>leftminsum(2*n,0);
+        vector<long long>rightmaxsum(2*n,0);
         for(int i=0;i<2*n;i++){
             maxheap.push(nums[i]);
             leftsum+=nums[i];
@@ -27,7 +28,7 @@ public:
         }
         long long res=LLONG_MAX;
         for (int i=n-1;i<2*n;i++){
-            res = min(res,(long long)(leftminsum[i]-rightmaxsum[i-n+1]));
+            res = min(res,leftminsum[i]-rightmaxsum[i-n+1]);
         }
         return res;
     }
