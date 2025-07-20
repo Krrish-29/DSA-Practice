@@ -1,4 +1,5 @@
 // 1948. Delete Duplicate Folders in System
+// note: try again tough and confusing question
 struct Node {
     string name;
     unordered_map<string, Node*> children;
