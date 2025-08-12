@@ -1,5 +1,5 @@
 // 500. Keyboard Row
-class Solution {
+class Solution { 
 public:
     bool checkRow(string s){
         int size=s.size();
