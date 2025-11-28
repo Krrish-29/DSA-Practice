@@ -1,4 +1,5 @@
 // 2872. Maximum Number of K-Divisible Components
+// Approach is to do normal dfs just remove components that have sum divisble by k
 class Solution {
 private:
     vector<vector<int>>adj_list;
