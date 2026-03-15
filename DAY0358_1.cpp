@@ -8,4 +8,4 @@ public:
         if(n>999) comma+=n-999;
         return comma;
     }
-};
+}; 
