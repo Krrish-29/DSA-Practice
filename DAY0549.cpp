@@ -3,20 +3,23 @@ class Solution {
 public:
     vector<int> largestPower(vector<int>& nums) {
         // the idx i corresponds to 14-i th bit 
-        // so we start with 14th bit meaning it would be filled in 0th idx
-        // now for solving the initial thought is to sort the numbers based on the ith bit 
-        // to make sure we have 1's before 0's and split the 1's group from 0's
-        // this is done for each idx on the groups we previously created 
-        // now each split might or might not result into new 1 and 0 group 
-        // if we get 0 at ith pos in a group then we split that group and skip and other groups below
+        // so we start with 14th bit meaning it would be filled in 0th idx of the power array 
+        // now for solving the initial thought is to sort the numbers based on the ith bit  
+        // to make sure we have 1's before 0's 
+        // now the main idea is to split the numbers into groups and keeping it that way therefore each time the numbers gets
+        // divided into smaller group based on the setBits they contributed
+        // and split of 1's and 0's is done only till we do not get a 0 at ith pos after that 
+        // sorting the groups wont help so we can skip counting set bits in it and reordering them as well
 
-        // now this will work but we can also do this greadily by first getting all 1's at ith pos
-        // and keeping 1's and 0's in separate groups and at any time if we get 0 after finishing that 
-        // group we skipping iteration for other group and create a new set using
-        // the groups we split into new and the others that were skipped for now 
-        // if a group only had 1 then it would be simply counted and put back again
-        // if it had any 0's then any other groups will be skipped and we will not count 1's in them
-        // since we needed to maximize the j (first elems having ith bit set)
+        // now this would work but we can also start with nums and make 2 groups of 0 and 1 
+        // having set bit at ith pos and store it then moving to 13th bit we go over these new groups 
+        // first over 1 group and separate again and if we get 0 then there is no point counting setBits 
+        // and separating the other group left we can create new set with all this and move to 12th bit 
+        // and do this again and the reason we are not counting after the curr group if we get 0 is that 
+        // first it wont do anything and might even reduce our set bits count for some ith pos
+        
+        // the analogy is that we can take a group of elems as a free flow of items that can be rearranged to maximize the 
+        // set bit we get at ith pos and we do this again and again (try to visualize the spliting of groups) 
         vector<int>power(15,0);
         int setBits=0,size;
         vector<vector<int>>group;
