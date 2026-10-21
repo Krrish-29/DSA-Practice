@@ -22,8 +22,8 @@ public:
         // the arrangement does not affect the cost but it affects the smallest string
         // so rather than directly replacing ? on the fly we store them , sort at end and place back to get smallest string
         // and for each ? we get the smallest char with smallest freq and store it, increment its freq push it back 
-        // one more improvement is that we can use a simple loop to find the minChar rather than priority queue since the 
-        // freq array is small O(26)
+        // one more improvement is that we can use a simple loop to find the minChar rather than priority queue since the freq array is small 
+        // O(26k) but since the pq has O (k log n) which is < O(26k), k for questions, the overhead cost for pq is more and array is easy to cache
         // also a important thing priority queue comparator works opposite to normal comparators
         vector<int>freq(26,0);
         int questions=0;
